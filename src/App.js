@@ -1,6 +1,8 @@
-import ExpenseItem from "./components/ExpenseItem";
+import ExpenseItem from "./components/Expenses/ExpenseItem";
+import Card from "./components/UI/Cards"
+import "./components//Expenses/Expenses.css"
 
-function App() {
+const App=()=> {
   const expenses=[
     {
       id: 'e1',
@@ -40,7 +42,7 @@ expenses.forEach((exp, index)=>{
     <div>
       <h2>Let's get Started!</h2>
       
-     <div>{newArr}</div>
+     <Card className="expenses">{newArr}</Card>
       
       </div>
   );
