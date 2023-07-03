@@ -1,6 +1,7 @@
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 import Card from "./components/UI/Cards"
 import "./components//Expenses/Expenses.css"
+import ExpenseForm from "./components/Expenses/ExpenseForm"
 
 const App=()=> {
   const expenses=[
@@ -35,15 +36,17 @@ expenses.forEach((exp, index)=>{
   amount={exp.amount}
   date={exp.date}
   LocationOfExpenditure={exp.LocationOfExpenditure}
-  ></ExpenseItem></div>)
+  ></ExpenseItem>
+  
+  </div>)
 })
   
   return (
     <div>
-      <h2>Let's get Started!</h2>
       
+      <ExpenseForm ></ExpenseForm>
      <Card className="expenses">{newArr}</Card>
-      
+     
       </div>
   );
 }
