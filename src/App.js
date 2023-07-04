@@ -1,7 +1,7 @@
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 import Card from "./components/UI/Cards"
 import "./components//Expenses/Expenses.css"
-import ExpenseForm from "./components/Expenses/ExpenseForm"
+import NewExpense from "./components/NewEpense/NewExpense"
 
 const App=()=> {
   const expenses=[
@@ -44,7 +44,7 @@ expenses.forEach((exp, index)=>{
   return (
     <div>
       
-      <ExpenseForm ></ExpenseForm>
+      <NewExpense ></NewExpense>
      <Card className="expenses">{newArr}</Card>
      
       </div>
