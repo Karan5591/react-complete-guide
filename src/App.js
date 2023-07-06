@@ -2,53 +2,46 @@ import ExpenseItem from "./components/Expenses/ExpenseItem";
 import Card from "./components/UI/Cards"
 import "./components//Expenses/Expenses.css"
 import NewExpense from "./components/NewEpense/NewExpense"
+import React, { useState } from "react";
 
+let tempArr=[];
 const App=()=> {
-  const expenses=[
+ 
+  const [data, newData]=useState([]) 
+  const addExpenseHandler=(expense)=>{
+    
+    let newArr=[];
+    tempArr=[...tempArr]
+    tempArr.push(expense)
+    console.log(tempArr)
+    tempArr.forEach((exp,index)=>
     {
-      id: 'e1',
-      title: 'car Insurance',
-      amount: 294,
-      date: new Date(2023, 6,7),
-      LocationOfExpenditure: 'Delhi'
-    },
-    {
-      id: 'e2',
-      title: 'Electricity bill',
-      amount: 100,
-      date: new Date(2023, 6,7),
-      LocationOfExpenditure: "HP"
-    },
-    {
-      id: 'e3',
-      title: 'Food',
-      amount: 29,
-      date: new Date(2023, 6,7),
-      LocationOfExpenditure: 'UP'
-    }
-  ]
-
-let newArr=[];
-expenses.forEach((exp, index)=>{
-  newArr.push(
-  <div key={index}><ExpenseItem
-  title={exp.title}
-  amount={exp.amount}
-  date={exp.date}
-  LocationOfExpenditure={exp.LocationOfExpenditure}
-  ></ExpenseItem>
-  
-  </div>)
-})
-  
-  return (
-    <div>
+      newArr.push(
+       
+        <div key={index}><ExpenseItem
+      title={exp.title}
+      amount={exp.amount} 
+      date={exp.date}
+      Location={exp.Location}
+      ></ExpenseItem> </div>)}); 
       
-      <NewExpense ></NewExpense>
-     <Card className="expenses">{newArr}</Card>
-     
+     newData(newArr) 
+   }
+//  expenses.forEach((exp, index)=>{
+//   newArr.push(
+//     <div key={index}><ExpenseItem
+//   title={exp.title}
+//   amount={exp.amount} 1
+//   date={exp.date}
+//   LocationOfExpenditure={exp.LocationOfExpenditure}
+//   ></ExpenseItem>
+  //   </div>)
+// })
+return (
+    <div>
+      <NewExpense onAddExpense={addExpenseHandler} ></NewExpense>
+      <Card className="expenses" >{data}</Card>
       </div>
   );
 }
-
 export default App;

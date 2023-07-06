@@ -8,6 +8,7 @@ import Card from "../UI/Cards"
 
 const  ExpenseItem=(props)=>
 {
+ console.log(props)   
     const [amount1, setTitle]=useState(props.amount);
     
     const ClickHandler=()=>{
@@ -17,7 +18,7 @@ const  ExpenseItem=(props)=>
          <Card className="expense-item">
            
         <ExpenseDate date={props.date}/>
-        <ExpenseDetails title={props.title} amount={amount1}  LocationOfExpenditure={props.LocationOfExpenditure}/> 
+        <ExpenseDetails title={props.title} amount={amount1}  Location={props.Location}/> 
         <button onClick={ClickHandler}>Update Amount</button>
          </Card>
     );
