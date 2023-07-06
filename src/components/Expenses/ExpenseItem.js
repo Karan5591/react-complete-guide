@@ -3,6 +3,7 @@ import "./ExpenseItem.css"
 import ExpenseDate from "./ExpenseDate";
 import ExpenseDetails from "./ExpenseDetails";
 import Card from "../UI/Cards"
+import Expenses from './Expenses'
 
 
 

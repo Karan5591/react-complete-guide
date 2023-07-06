@@ -2,23 +2,36 @@ import ExpenseItem from "./components/Expenses/ExpenseItem";
 import Card from "./components/UI/Cards"
 import "./components//Expenses/Expenses.css"
 import NewExpense from "./components/NewEpense/NewExpense"
-import React, { useState } from "react";
-
+import Expenses from "./components/Expenses/Expenses";
+import { useState } from "react";
 let tempArr=[];
-const App=()=> {
- 
-const expenses=[{
+
+const DUMMMY_EXPENSES=[{
   id:'1',
   title:"Book",
   amount:10,
   date: new Date(),
   Location:'hp'
 
+},
+{
+  id:'2',
+  title:"fruit",
+  amount:100,
+  date: new Date(),
+  Location:'UP'
+
 }]
 
- // const [data, newData]=useState([]) 
+const App=()=> {
+  
+ const [expenses, setExpenses]=useState(DUMMMY_EXPENSES) 
  let newArr=[]
-  const addExpenseHandler=(expense)=>{}
+  const addExpenseHandler=(expense)=>{
+    setExpenses(prevExpenses =>{
+      return [expense, ...prevExpenses]
+    })
+  }
   //============================================Add Data Dynamically============  
   //   let newArr=[];
   //   tempArr=[...tempArr]
@@ -55,7 +68,10 @@ return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} ></NewExpense>
       {/* <Card className="expenses" >{data}</Card> */}
-      <Card className="expenses" >{newArr}</Card>
+      <Card className="expenses" >
+       
+        <Expenses Items={expenses}></Expenses>
+        </Card>
       </div>
   );
 }
