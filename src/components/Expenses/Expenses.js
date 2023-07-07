@@ -6,31 +6,58 @@ import './Expenses.css';
 import ExpenseFilter from './ExpensesFilter'
 
 const Expenses = (props) => {
-console.log(props.Items[0].date.getFullYear())
-  const [filteredYear, setFilteredYear]=useState('2023')
+
+const [filteredYear, setFilteredYear]=useState(2023)
+
+let filteredExpenses=props.Items.filter((chk)=>{
+  
+  let num=parseInt(filteredYear)
+  
+  return (chk.date.getFullYear())===num
+})
+console.log(filteredExpenses); 
+
+  
   const filterChangeHandler=selectedYear =>
   {
     setFilteredYear(selectedYear);
   }
 
+  let expenseAvailable= <p style={{"color":"White"}}>No expense Found</p>
+  if(filteredExpenses.length===1)
+  {
+    expenseAvailable= filteredExpenses.map((exp)=>(
+      <>
+      <ExpenseItem 
+      key={exp.id}
+      title={exp.title}
+      amount={exp.amount}
+      date={exp.date}
+      ></ExpenseItem>
+      <p style={{"color":"White"}}>Only single Expense here. Please add more...</p>
+      </>
+      ))
+      
+     
+  }
+  if(filteredExpenses.length>1)
+  {
+    expenseAvailable= filteredExpenses.map((exp)=>(
+      
+      <ExpenseItem 
+      key={exp.id}
+      title={exp.title}
+      amount={exp.amount}
+      date={exp.date}
+      />
+    ))
+  }
 
   return (
     <Card className="expenses">
       <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler}/>
-     
-     {props.Items.filter((chk)=>{return chk.date.getFullYear()===filteredYear}).map((exp)=>(
-      
-        <ExpenseItem 
-        key={exp.id}
-        title={exp.title}
-        amount={exp.amount}
-        date={exp.date}
-        />
-      ))}
-      
-      
-      
-    </Card>
+     {expenseAvailable}
+      </Card>
   );
 }
 
