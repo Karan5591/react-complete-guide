@@ -71,6 +71,7 @@ return (
       <Card className="expenses" >
        
         <Expenses Items={expenses}></Expenses>
+        
         </Card>
       </div>
   );

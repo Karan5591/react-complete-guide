@@ -9,19 +9,14 @@ import Expenses from './Expenses'
 
 const  ExpenseItem=(props)=>
 {
- console.log(props)   
-    const [amount1, setTitle]=useState(props.amount);
-    
-    const ClickHandler=()=>{
-       setTitle('100');
-    }
+  
     return(
          <Card className="expense-item">
-           
-        <ExpenseDate date={props.date}/>
-        <ExpenseDetails title={props.title} amount={amount1}  Location={props.Location}/> 
-        <button onClick={ClickHandler}>Update Amount</button>
-         </Card>
+        
+        <ExpenseDate date={props.date} filter={props.filter}/>
+        <ExpenseDetails title={props.title} amount={props.amount}  Location={props.Location}/> 
+        {/* <button onClick={ClickHandler}>Update Amount</button> */}
+           </Card>
     );
 }
 export default ExpenseItem;
