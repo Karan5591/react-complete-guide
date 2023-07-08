@@ -44,9 +44,33 @@ const submitHandler=(event)=>{
     setEnteredTitle('')
     setEnteredLocation('')
 }
-    return(
+
+const [buttonValue, showButtom] = React.useState('block');
+const [formValue, showForm] = React.useState('none');
+
+const newVisibleState=()=>{
+    if(formValue=='none')
+    {
+        showForm('block') 
+         showButtom('none')
+    }
+    else{
+        showButtom('block')
+        showForm('none')
+    }
+       
+}
+
+   return(
+        <>
+       <div className='new-expense__controls' style={{display:buttonValue}}>
+        
+            <button onClick={newVisibleState}>Add New Expense</button>
+
+            </div>
         <form onSubmit={submitHandler}>
-        <div className='new-expense__controls'>
+            
+        <div className='new-expense__controls' style={{display:formValue}}>
             <div  className='new-expense__control' >
            <label>Expense title</label>
             <input type='text' value={enteredTitle} onChange={ChangeTitle}></input>
@@ -64,12 +88,13 @@ const submitHandler=(event)=>{
             <input type='text' value={enteredLocation} onChange={changeLocation}></input>
             </div>
             
-                <div className='new-expense__actions'>
-           <button >Add Expense</button>
+                <div className='new-expense__controls'>
+                <button onClick={newVisibleState}>Cancel</button>
+           <button onClick={newVisibleState}>Add Expense</button>
+           
            </div>
-        
         </div>
-        </form>
+        </form></>
     );
 }
 export default ExpenseForm;
